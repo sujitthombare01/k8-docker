@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sujit-ingress-01
+  annotations:
+    kubernetes.io/ingress.class: haproxy
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /apple
+            pathType: Prefix
+            backend:
+              service:
+                name: apple-service
+                port:
+                  number: 5678
+          - path: /banana
+            pathType: Prefix
+            backend:
+              service:
+                name: banana-service
+                port:
+                  number: 5678
+          - path: /v1/api
+            pathType: Prefix
+            backend:
+              service:
+                name: sujit-lb-hapi-service
+                port:
+                  number: 8080                  
