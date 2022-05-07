@@ -26,6 +26,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: sujit-lb-hapi-service
+                name: sujit-lb-m1-service
                 port:
-                  number: 8080                  
+                  number: 8080
+          - path: /v2/api
+            pathType: Prefix
+            backend:
+              service:
+                name: sujit-lb-m2-service
+                port:
+                  number: 8080
