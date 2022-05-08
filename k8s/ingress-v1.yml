@@ -36,3 +36,17 @@ spec:
                 name: sujit-lb-m2-service
                 port:
                   number: 8080
+          - path: /web-app
+            pathType: Prefix
+            backend:
+              service:
+                name: sujit-lb-f1-service
+                port:
+                  number: 80
+          - path: /web
+            pathType: Prefix
+            backend:
+              service:
+                name: sujit-lb-f2-service
+                port:
+                  number: 80

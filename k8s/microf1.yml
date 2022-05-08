@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microf1-web-deployment
+  labels:
+    app: microf1-web-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: microf1-web-app
+  template:
+    metadata:
+      labels:
+        app: microf1-web-app
+    spec:
+      containers:
+      - name: microf1-web-app
+        image: public.ecr.aws/p9h7s8r8/sujit-02may-microfrontend1:V1.0.0
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sujit-lb-f1-service
+spec:
+  selector:
+     app: microf1-web-app
+  ports:
+    - port: 80
